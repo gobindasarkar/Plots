@@ -23,45 +23,37 @@
       animation: "fade",
     });
     /*-------------------------------------------
-      hero-banner-slider active
+      one page nave active
     --------------------------------------------- */
-    $(".hero-banner-slider").slick({
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      centerMode: false,
-      dots: false,
-      arrows: true,
-      prevArrow: '<i class="slick-prev fa-solid fa-angle-left"></i>',
-      nextArrow: '<i class="slick-next fa-solid fa-angle-right"></i>',
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          },
-        },
-        {
-          breakpoint: 992,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          },
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          },
-        },
-      ],
+    $(function () {
+      const $menuLinks = $('nav a');
+      const headerHeight = $('header').outerHeight();
+      $menuLinks.on('click', function (e) {
+        e.preventDefault();
+
+        const target = $(this.getAttribute('href'));
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top - headerHeight
+          }, 600, 'swing');
+        }
+        $menuLinks.removeClass('active');
+        $(this).addClass('active');
+      });
+      $(window).on('scroll', function () {
+        const scrollPos = $(window).scrollTop();
+
+        $('section').each(function () {
+          const top = $(this).offset().top - headerHeight - 1;
+          const bottom = top + $(this).outerHeight();
+          const id = $(this).attr('id');
+
+          if (scrollPos >= top && scrollPos < bottom) {
+            $menuLinks.removeClass('active');
+            $menuLinks.filter('[href="#' + id + '"]').addClass('active');
+          }
+        });
+      });
     });
-   
-    
   });
 })(jQuery);
