@@ -385,7 +385,14 @@
         <div class="col-lg-6 mx-auto">
           <div class="text-wrap">
             <div class="contact-form mb-5">
-              <form action="#">
+              <?php if (isset($_GET['status'])): ?>
+              <?php if ($_GET['status'] === 'success'): ?>
+              <div class="alert alert-success">✅ Your enquiry has been sent successfully!</div>
+              <?php else: ?>
+              <div class="alert alert-danger">❌ Something went wrong. Please try again.</div>
+              <?php endif; ?>
+              <?php endif; ?>
+              <form action="contact.php" method="POST">
                 <div class="form-group">
                   <input type="text" class="form-control" id="fullname" placeholder="Full Name *" required>
                 </div>
