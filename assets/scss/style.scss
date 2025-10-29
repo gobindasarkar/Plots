@@ -508,6 +508,78 @@ Version: 1.0
 /*===================================
 #.footer-area
 ===================================*/
+/*===============================
+ #.thanks
+=================================*/
+.thanks-page {
+    padding: 6rem 0;
+    min-height: 100vh;
+    background-color: var(--primary-color);
+    display: grid;
+    place-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+
+    &::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, .4);
+        z-index: -1;
+    }
+
+    i {
+        font-size: 10rem;
+        color: var(--primary-color);
+    }
+
+    h1 {
+        margin-top: 2rem;
+        font-size: 7rem;
+        line-height: 1;
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+
+    p {
+        margin-bottom: 3rem;
+        margin-top: 2rem;
+        font-size: 1.6rem;
+    }
+}
+
+.thanks-page-wrap {
+    padding: 3rem;
+    border-radius: 2rem;
+    background: rgba(0, 0, 0, .4);
+}
+
+@media (max-width: 991px) {
+    .thanks-page h1 {
+        font-size: 5rem;
+    }
+
+    .thanks-page h3 {
+        font-size: 2.4rem;
+    }
+
+    .thanks-page p {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .thanks-page h1 {
+        font-size: 5rem;
+    }
+}
 .footer-area {
     background-color: #F9FAFC;
     padding: 5rem 0;
